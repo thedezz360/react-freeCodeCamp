@@ -21,6 +21,10 @@ npm run build
 #para usar prop-types
 npm i --save prop-types
 
+##imagenes
+-deben ser importadas con import o require
+
+
 ### componentes
 
 --hay dos principales funcionales (funcion) y de clase
