@@ -1,34 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.css";
+import logoReact from "./assets/react.svg";
+import Boton from './components/Boton/Boton.jsx';
+import {Pantalla } from './components/Pantalla/Pantalla.jsx';
+import BotonClear from './components/BotonClear/BotonClear.jsx';
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [input, setInput] = useState('');
+
+  const agregarInput = val => {
+    setInput(`${input} ${val}`)
+  };
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="logo-contenedor">
+        <img className="logo-react" src={logoReact} alt="logo React" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="contenedor-calculadora">
+
+        <Pantalla input={input}/>
+
+        <div className="fila">
+          <Boton manejarClic={agregarInput}>1</Boton>
+          <Boton manejarClic={agregarInput}>2</Boton>
+          <Boton manejarClic={agregarInput}>3</Boton>
+          <Boton manejarClic={agregarInput}>+</Boton>
+        </div>
+        <div className="fila">
+          <Boton manejarClic={agregarInput}>4</Boton>
+          <Boton manejarClic={agregarInput}>5</Boton>
+          <Boton manejarClic={agregarInput}>6</Boton>
+          <Boton manejarClic={agregarInput}>-</Boton>
+        </div>
+        <div className="fila">
+          <Boton manejarClic={agregarInput}>7</Boton>
+          <Boton manejarClic={agregarInput}>8</Boton>
+          <Boton manejarClic={agregarInput}>9</Boton>
+          <Boton manejarClic={agregarInput}>*</Boton>
+        </div>
+        <div className="fila">
+          <Boton manejarClic={agregarInput}>=</Boton>
+          <Boton manejarClic={agregarInput}>0</Boton>
+          <Boton manejarClic={agregarInput}>.</Boton>
+          <Boton manejarClic={agregarInput}>/</Boton>
+        </div>
+        <div className="fila">
+          <BotonClear 
+            limpiarInput={() => setInput('')}
+          >
+            Clear
+          </BotonClear>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
