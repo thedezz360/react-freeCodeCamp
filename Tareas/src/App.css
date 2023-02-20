@@ -1,0 +1,33 @@
+.aplicacion-tareas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+	height: 100vh;
+}
+
+/* Logo React*/
+
+.logo-contenedor{
+	width: 100%;
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo{
+	width: 400px;
+	height: 50px;
+}
+
+/* Lista de tareas*/
+
+.tareas-lista-principal{
+	width: 600px;
+	min-height: 500px;
+	background-color: #d0d0d5;
+	padding: 25px;
+	margin: 10px;
+	border-radius: 26px;
+}
