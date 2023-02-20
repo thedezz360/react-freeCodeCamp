@@ -1,24 +1,30 @@
 import "./App.css";
-import logoReact from "./assets/react.svg";
 import Boton from './components/Boton/Boton.jsx';
 import {Pantalla } from './components/Pantalla/Pantalla.jsx';
 import BotonClear from './components/BotonClear/BotonClear.jsx';
 import { useState } from "react";
+import { evaluate } from 'mathjs';
+import Logo from './components/Logo/Logo.jsx';
 
 function App() {
 
   const [input, setInput] = useState('');
 
   const agregarInput = val => {
-    setInput(`${input} ${val}`)
+    setInput(`${input}${val}`)
+  };
+
+  const calcularResultado = ()=>{
+    if (input === '') return;
+    setInput(evaluate(input));
   };
 
 
   return (
     <div className="App">
-      <div className="logo-contenedor">
-        <img className="logo-react" src={logoReact} alt="logo React" />
-      </div>
+      
+      <Logo />
+
       <div className="contenedor-calculadora">
 
         <Pantalla input={input}/>
@@ -42,7 +48,7 @@ function App() {
           <Boton manejarClic={agregarInput}>*</Boton>
         </div>
         <div className="fila">
-          <Boton manejarClic={agregarInput}>=</Boton>
+          <Boton manejarClic={calcularResultado}>=</Boton>
           <Boton manejarClic={agregarInput}>0</Boton>
           <Boton manejarClic={agregarInput}>.</Boton>
           <Boton manejarClic={agregarInput}>/</Boton>
