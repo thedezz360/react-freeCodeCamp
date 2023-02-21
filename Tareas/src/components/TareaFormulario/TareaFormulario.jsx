@@ -1,26 +1,38 @@
 import './TareaFormulario.css';
 import { useState } from 'react';
+//para generar los id's
+import { v4 as uuidv4 } from 'uuid';
 
 function TareaFormulario(props) {
 
 	const [input, setInput]= useState('');
 
 	const manejarCambio = (e)=>{
-		console.log('escribiendo');
 		setInput(e.target.value)
-		console.log(input);
-	}
-
-	const manejarEnvio = (e)=>{
-		const tareaNueva={
-			id: '123',
-			texto: 'hola'
-		}
 	};
 
+	const manejarEnvio = (e)=>{
+		e.preventDefault();
+		
+		const tareaNueva={
+			id: uuidv4(),
+			texto: input,
+			completada: false
+		};
+		
+		props.onSubmit(tareaNueva);
+	};
+
+
+
   return (
-    <form className="tarea-formulario">
-      <input
+    <form 
+			className="tarea-formulario"
+			onSubmit={manejarEnvio}
+		>
+			
+			<input
+				id="nombreTarea"
         type="text"
         className="tarea-input"
         placeholder="Escribe una tarea"
